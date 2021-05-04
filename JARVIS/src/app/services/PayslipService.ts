@@ -7,12 +7,14 @@ export class PayslipService {
     {
       id: 0,
       date: 'Jan 2021',
-      amount: 660
+      amount: 660,
+      company: 'Capcir'
     },
     {
       id: 1,
       date: 'Feb 2021',
-      amount: 963
+      amount: 963,
+      company: 'Silene Habitat'
     }
   ];
 

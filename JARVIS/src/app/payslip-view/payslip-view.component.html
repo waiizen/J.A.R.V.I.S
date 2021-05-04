@@ -6,7 +6,8 @@
         <app-payslip *ngFor="let payslip of payslips"
                      [id]="payslip.id"
                      [date]="payslip.date"
-                     [amount]="payslip.amount"></app-payslip>
+                     [amount]="payslip.amount"
+                     [company]="payslip.company"></app-payslip>
       </ul>
     </div>
   </div>

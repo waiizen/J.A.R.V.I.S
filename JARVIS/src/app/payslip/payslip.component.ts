@@ -10,6 +10,7 @@ export class PayslipComponent implements OnInit {
   @Input() id: number;
   @Input() date: string;
   @Input() amount: number;
+  @Input() company: string;
 
   constructor() { }
 
