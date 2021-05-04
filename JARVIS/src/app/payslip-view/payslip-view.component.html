@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>My Payslips</h2>
+      <ul class="list-group">
+        <app-payslip *ngFor="let payslip of payslips"
+                     [id]="payslip.id"
+                     [date]="payslip.date"
+                     [amount]="payslip.amount"></app-payslip>
+      </ul>
+    </div>
+  </div>
+</div>
