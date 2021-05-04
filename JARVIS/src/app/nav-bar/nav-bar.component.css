@@ -1,3 +1,6 @@
-@import "~bootstrap-icons/font/bootstrap-icons.css";
+#title {
+  font-family: "Orbitron", sans-serif;
+  font-size: large;
+}
 
 /*# sourceMappingURL=nav-bar.component.css.map */
