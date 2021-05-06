@@ -11,11 +11,16 @@ import {RouterModule, Routes} from "@angular/router";
 import { AuthComponent } from './auth/auth.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { HomeComponent } from './home/home.component';
+import { PayslipSingleComponent } from './payslip-single/payslip-single.component';
+import { PayslipFormComponent } from './payslip-form/payslip-form.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'home', component: HomeComponent},
   { path: 'payslip', component: PayslipViewComponent},
+  { path: 'payslip/:id', component: PayslipFormComponent},
+  { path: 'payslip/new', component: PayslipFormComponent},
   { path: 'auth', component: AuthComponent},
   { path: 'not-found', component: FourOhFourComponent},
   { path: '**', redirectTo: 'not-found'}
@@ -29,12 +34,15 @@ const appRoutes: Routes = [
     PayslipViewComponent,
     AuthComponent,
     FourOhFourComponent,
-    HomeComponent
+    HomeComponent,
+    PayslipSingleComponent,
+    PayslipFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    ReactiveFormsModule
   ],
   providers: [
     PayslipService

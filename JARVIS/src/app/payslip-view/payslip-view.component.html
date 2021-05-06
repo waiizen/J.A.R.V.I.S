@@ -2,10 +2,12 @@
   <div class="row">
     <div class="col-xs-12">
       <h2>My Payslips</h2>
+      <button class="btn btn-primary" (click)="onNewPayslip()">Add</button>
       <ul class="list-group">
         <app-payslip *ngFor="let payslip of payslips"
                      [id]="payslip.id"
-                     [date]="payslip.date"
+                     [month]="payslip.month"
+                     [year]="payslip.year"
                      [amount]="payslip.amount"
                      [company]="payslip.company"></app-payslip>
       </ul>

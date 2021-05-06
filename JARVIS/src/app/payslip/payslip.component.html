@@ -1,7 +1,7 @@
 <li class="list-group-item">
-  <p>{{company}} - {{date}}</p>
+  <p>{{company}} - {{month}} {{year}}</p>
   <p>{{amount}}€</p>
-  <button class="btn btn-info">Show</button>
+  <button class="btn btn-info" (click)="onShow(id)">Show</button>
   <button class="btn btn-warning">Download</button>
   <button class="btn btn-danger rightAlign">Manage</button>
 </li>
