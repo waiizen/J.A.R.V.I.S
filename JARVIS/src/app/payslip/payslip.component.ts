@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {PayslipService} from "../services/PayslipService";
 
 @Component({
   selector: 'app-payslip',
@@ -14,13 +15,18 @@ export class PayslipComponent implements OnInit {
   @Input() amount: number;
   @Input() company: string;
 
-  constructor(private router: Router) { }
+  constructor(private payslipService: PayslipService,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
 
   onShow(id: number){
-    this.router.navigate(['/payslip', id]);
+    this.router.navigate(['/payslip/view', id]);
+  }
+
+  onDelete(id: number){
+
   }
 
 }

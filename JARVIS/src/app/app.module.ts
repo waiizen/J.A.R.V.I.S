@@ -19,7 +19,7 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'home', component: HomeComponent},
   { path: 'payslip', component: PayslipViewComponent},
-  { path: 'payslip/:id', component: PayslipFormComponent},
+  { path: 'payslip/view/:id', component: PayslipSingleComponent},
   { path: 'payslip/new', component: PayslipFormComponent},
   { path: 'auth', component: AuthComponent},
   { path: 'not-found', component: FourOhFourComponent},

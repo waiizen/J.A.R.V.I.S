@@ -11,6 +11,7 @@ export class AppComponent {
     const firebaseConfig = {
       apiKey: "AIzaSyAl_FPcOvI5KrPB6CQMhHV7Ilj3heaCK54",
       authDomain: "jarvis-nf.firebaseapp.com",
+      databaseURL: "https://jarvis-nf-default-rtdb.europe-west1.firebasedatabase.app",
       projectId: "jarvis-nf",
       storageBucket: "jarvis-nf.appspot.com",
       messagingSenderId: "1055873151254",
