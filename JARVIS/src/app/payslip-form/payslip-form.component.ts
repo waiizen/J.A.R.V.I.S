@@ -12,6 +12,9 @@ import {Payslip} from "../models/payslip.model";
 export class PayslipFormComponent implements OnInit {
 
   payslipForm: FormGroup;
+  fileIsUploading = false;
+  fileUploaded = false;
+  fileUrl : string;
 
   constructor(private formBuilder: FormBuilder,
               private payslipService: PayslipService,
@@ -37,8 +40,26 @@ export class PayslipFormComponent implements OnInit {
     newPayslip.year = this.payslipForm.get('year').value;
     newPayslip.amount = this.payslipForm.get('amount').value;
     newPayslip.company = this.payslipForm.get('company').value;
+    if(this.fileUrl && this.fileUrl != ""){
+      newPayslip.photo = this.fileUrl;
+    }
     this.payslipService.createNewPayslip(newPayslip);
     this.router.navigate(['/payslip']);
+  }
+
+  onUploadFile(file: File){
+    this.fileIsUploading = true;
+    this.payslipService.uploadFile(file).then(
+      (url: string) => {
+        this.fileUrl = url;
+        this.fileIsUploading = false;
+        this.fileUploaded = true;
+      }
+    );
+  }
+
+  detectFiles(event){
+    this.onUploadFile(event.target.files[0]);
   }
 
 }

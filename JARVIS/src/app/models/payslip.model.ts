@@ -4,4 +4,5 @@ export class Payslip{
   year: number;
   amount: number;
   company: string;
+  photo: string;
 }

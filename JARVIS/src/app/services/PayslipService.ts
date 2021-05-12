@@ -61,6 +61,18 @@ export class PayslipService {
   }
 
   removePayslip(payslip: Payslip){
+    if(payslip.photo){
+      const storageRef = firebase.storage().refFromURL(payslip.photo);
+      storageRef.delete().then(
+        () => {
+          console.log("Payslip photo removed");
+        },
+        (error) => {
+          console.log("Could not remove payslip photo : " +error);
+        }
+      );
+    }
+
     const payslipIndexToRemove = this.payslipList.findIndex(
       (PS1) => {
         if(PS1 === payslip){return true;}
@@ -69,6 +81,27 @@ export class PayslipService {
     this.payslipList.splice(payslipIndexToRemove, 1);
     this.savePayslips();
     this.emitPayslipSubject();
+  }
+
+  uploadFile(file: File){
+    return new Promise(
+      (resolve, reject) => {
+        const filename = Date.now().toString();
+        const upload = firebase.storage().ref()
+          .child('images/' + filename + file.name).put(file);
+        upload.on(firebase.storage.TaskEvent.STATE_CHANGED,
+          () => {
+            console.log("Loading");
+          },
+          (error) => {
+            console.log('Loading error : '+error);
+            reject();
+          },
+          () => {
+            resolve(upload.snapshot.ref.getDownloadURL());
+          })
+      }
+    );
   }
 
 }

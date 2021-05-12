@@ -22,7 +22,13 @@
         <input type="text" id="company"
                class="form-control" formControlName="company">
       </div>
-      <button class="btn btn-success" [disabled]="payslipForm.invalid"
+      <div class="form-group">
+        <h4>Add a picture</h4>
+        <input type="file" (change)="detectFiles($event)"
+               class="form-control" accept="image/*">
+        <p class="text-success" *ngIf="fileUploaded">File loaded !</p>
+      </div>
+      <button class="btn btn-success" [disabled]="payslipForm.invalid || fileIsUploading"
               type="submit">Save
       </button>
 

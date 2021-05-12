@@ -14,6 +14,7 @@ export class PayslipSingleComponent implements OnInit {
   year: number;
   amount: number;
   company: string;
+  photo: string;
 
   constructor(private payslipService: PayslipService,
               private route: ActivatedRoute) { }
