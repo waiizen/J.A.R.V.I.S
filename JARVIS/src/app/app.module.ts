@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { PayslipComponent } from './payslip/payslip.component';
-import { PayslipViewComponent } from './payslip-view/payslip-view.component';
 import { PayslipService } from "./services/PayslipService";
 import {RouterModule, Routes} from "@angular/router";
 import { AuthComponent } from './auth/auth.component';
@@ -22,7 +21,7 @@ import {MatSelectModule} from '@angular/material/select';
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'home', component: HomeComponent},
-  { path: 'payslip', component: PayslipViewComponent},
+  { path: 'payslip', component: PayslipComponent},
   { path: 'payslip/view/:id', component: PayslipSingleComponent},
   { path: 'payslip/new', component: PayslipFormComponent},
   { path: 'auth', component: AuthComponent},
@@ -35,7 +34,6 @@ const appRoutes: Routes = [
     AppComponent,
     NavBarComponent,
     PayslipComponent,
-    PayslipViewComponent,
     AuthComponent,
     FourOhFourComponent,
     HomeComponent,

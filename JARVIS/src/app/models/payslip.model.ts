@@ -1,6 +1,6 @@
 export class Payslip{
   id: number;
-  month: string;
+  month: number;
   year: number;
   amount: number;
   company: string;
