@@ -26,7 +26,7 @@ export class PayslipComponent implements OnInit {
   }
 
   onDelete(id: number){
-
+    this.payslipService.removePayslip(this.payslipService.getPayslipById(id));
   }
 
 }

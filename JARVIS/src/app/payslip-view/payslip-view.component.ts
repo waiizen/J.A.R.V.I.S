@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from "rxjs";
 import {PayslipService} from "../services/PayslipService";
 import {Router} from "@angular/router";
+import {Payslip} from "../models/payslip.model";
 
 @Component({
   selector: 'app-payslip-view',
@@ -10,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class PayslipViewComponent implements OnInit, OnDestroy {
 
-  payslips: any[];
+  payslips: Payslip[];
   payslipSubscription: Subscription;
 
   constructor(private payslipService: PayslipService,
@@ -18,8 +19,8 @@ export class PayslipViewComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.payslipSubscription = this.payslipService.payslipsSubject.subscribe(
-      (payslips: any[]) => {
-        this.payslips =payslips;
+      (payslips: Payslip[]) => {
+        this.payslips = payslips;
       }
     );
     this.payslipService.emitPayslipSubject();

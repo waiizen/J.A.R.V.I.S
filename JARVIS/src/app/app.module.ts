@@ -14,6 +14,10 @@ import { HomeComponent } from './home/home.component';
 import { PayslipSingleComponent } from './payslip-single/payslip-single.component';
 import { PayslipFormComponent } from './payslip-form/payslip-form.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSliderModule} from "@angular/material/slider";
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from '@angular/material/select';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
@@ -42,7 +46,11 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   providers: [
     PayslipService

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PayslipService} from "../services/PayslipService";
 import {ActivatedRoute, Router} from "@angular/router";
+import {Payslip} from "../models/payslip.model";
 
 @Component({
   selector: 'app-payslip-single',
@@ -9,22 +10,19 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class PayslipSingleComponent implements OnInit {
 
-  id: number;
-  month: string;
-  year: number;
-  amount: number;
-  company: string;
-  photo: string;
+  payslip: Payslip;
 
   constructor(private payslipService: PayslipService,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];
-    this.month = this.payslipService.getPayslipById(+this.id).month;
-    this.year = this.payslipService.getPayslipById(+this.id).year;
-    this.amount = this.payslipService.getPayslipById(+this.id).amount;
-    this.company = this.payslipService.getPayslipById(+this.id).company;
+    this.payslip = new Payslip();
+    const id = this.route.snapshot.params['id'];
+    this.payslipService.getSinglePaylsip(+id).then(
+      (payslip: Payslip) => {
+        this.payslip = payslip;
+      }
+    );
   }
 
 }

@@ -2,16 +2,26 @@
   <div class="col-sm-8 col-sm-offset-2">
     <h2>Add a new payslip</h2>
     <form [formGroup]="payslipForm" (ngSubmit)="onSavePayslip()">
-      <div class="form-group">
-        <label for="month">Month</label>
-        <input type="text" id="month"
-               class="form-control" formControlName="month">
-      </div>
-      <div class="form-group">
-        <label for="year">Year</label>
-        <input type="number" id="year"
-               class="form-control" formControlName="year">
-      </div>
+
+      <mat-form-field>
+        <mat-label>Month</mat-label>
+        <mat-select formControlName="month">
+          <mat-option *ngFor="let month of month" [value]="month.value">
+            {{month.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field>
+        <mat-label>Year</mat-label>
+        <mat-select formControlName="year">
+          <mat-option *ngFor="let year of year" [value]="year.value">
+            {{year.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
       <div class="form-group">
         <label for="amount">Amount</label>
         <input type="text" id="amount"

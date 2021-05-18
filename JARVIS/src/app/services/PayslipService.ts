@@ -2,12 +2,14 @@ import {Subject} from "rxjs";
 import {Payslip} from "../models/payslip.model";
 import firebase from "firebase";
 import DataSnapshot = firebase.database.DataSnapshot;
+import {Injectable} from "@angular/core";
 
+@Injectable()
 export class PayslipService {
 
-  payslipList : Payslip[] = [];
+  payslipList: Payslip[] = [];
 
-  payslipsSubject = new Subject<any[]>();
+  payslipsSubject = new Subject<Payslip[]>();
 
   constructor() {
     this.getPayslips();

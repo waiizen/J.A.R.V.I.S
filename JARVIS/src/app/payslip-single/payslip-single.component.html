@@ -1,3 +1,3 @@
-<p>{{id}} {{month}} {{year}} {{amount}} {{company}}</p>
-<img style="max-width:400px;" *ngIf="photo" [src]="photo">
+<p>{{payslip.id}} {{payslip.month}} {{payslip.year}} {{payslip.amount}} {{payslip.company}}</p>
+<img style="max-width:400px;" *ngIf="payslip.photo" [src]="payslip.photo">
 <a routerLink="/payslip">Go back to payslip's list.</a>

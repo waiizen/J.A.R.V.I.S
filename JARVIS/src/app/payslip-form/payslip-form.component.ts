@@ -16,6 +16,31 @@ export class PayslipFormComponent implements OnInit {
   fileUploaded = false;
   fileUrl : string;
 
+  month: any[] = [
+    {value: 'January', viewValue: 'January'},
+    {value: 'February', viewValue: 'February'},
+    {value: 'March', viewValue: 'March'},
+    {value: 'April', viewValue: 'April'},
+    {value: 'May', viewValue: 'May'},
+    {value: 'June', viewValue: 'June'},
+    {value: 'July', viewValue: 'July'},
+    {value: 'August', viewValue: 'August'},
+    {value: 'September', viewValue: 'September'},
+    {value: 'October', viewValue: 'October'},
+    {value: 'November', viewValue: 'November'},
+    {value: 'December', viewValue: 'December'}
+  ];
+
+  year: any[] = [
+    {value: 2017, viewValue: '2017'},
+    {value: 2018, viewValue: '2018'},
+    {value: 2019, viewValue: '2019'},
+    {value: 2020, viewValue: '2020'},
+    {value: 2021, viewValue: '2021'},
+    {value: 2022, viewValue: '2022'},
+    {value: 2023, viewValue: '2023'}
+  ];
+
   constructor(private formBuilder: FormBuilder,
               private payslipService: PayslipService,
               private router: Router) { }
@@ -35,7 +60,14 @@ export class PayslipFormComponent implements OnInit {
 
   onSavePayslip(){
     const newPayslip = new Payslip();
-    newPayslip.id = 0;
+    if(this.payslipService.payslipList.length == 0){
+      newPayslip.id = 0;
+    } else {
+      const max = this.payslipService.payslipList.reduce(function(prev, current) {
+        return (prev.id > current.id) ? prev : current
+      })
+      newPayslip.id = max.id+1;
+    }
     newPayslip.month = this.payslipForm.get('month').value;
     newPayslip.year = this.payslipForm.get('year').value;
     newPayslip.amount = this.payslipForm.get('amount').value;
