@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {PayslipService} from "../services/PayslipService";
-import {Payslip} from "../models/payslip.model";
+import {PayslipService} from "../../services/PayslipService";
+import {Payslip} from "../../models/payslip.model";
 import {Subscription} from "rxjs";
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {PayslipService} from "../services/PayslipService";
+import {PayslipService} from "../../services/PayslipService";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Payslip} from "../models/payslip.model";
+import {Payslip} from "../../models/payslip.model";
 
 @Component({
   selector: 'app-payslip-single',

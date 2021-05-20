@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {PayslipService} from "../services/PayslipService";
+import {PayslipService} from "../../services/PayslipService";
 import {Router} from "@angular/router";
-import {Payslip} from "../models/payslip.model";
+import {Payslip} from "../../models/payslip.model";
 
 @Component({
   selector: 'app-payslip-form',

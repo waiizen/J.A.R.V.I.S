@@ -1,1 +1,3 @@
-<p>auth works!</p>
+<a routerLink="/auth/signin" style="text-decoration: none; color: inherit;"><button [disabled]="isAuth" class="btn btn-info">Sign in</button></a>
+<br/><br/>
+<button class="btn btn-warning" [disabled]="!isAuth" (click)="onSignOut()">Sign out</button>
