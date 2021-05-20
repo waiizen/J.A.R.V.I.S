@@ -43,35 +43,10 @@ export class PayslipComponent implements OnInit {
   }
 
   public get sortData(){
-    return this.payslips.sort((a, b) => (a.year < b.year) ? 1 : (a.year === b.year) ? ((a.amount < b.amount) ? 1 : -1) : -1 );
+    return this.payslips.sort((a, b) => (a.year < b.year) ? 1 : (a.year === b.year) ? ((a.month < b.month) ? 1 : -1) : -1 );
   }
 
   toMonthString(month: number) {
-    switch (month){
-      case 1:
-        return 'January';
-      case 2:
-        return 'February';
-      case 3:
-        return 'March';
-      case 4:
-        return 'April';
-      case 5:
-        return 'May';
-      case 6:
-        return 'June';
-      case 7:
-        return 'July';
-      case 8:
-        return 'August';
-      case 9:
-        return 'September';
-      case 10:
-        return 'October';
-      case 11:
-        return 'November';
-      case 12:
-        return 'December';
-    }
+    return this.payslipService.toMonthString(month);
   }
 }

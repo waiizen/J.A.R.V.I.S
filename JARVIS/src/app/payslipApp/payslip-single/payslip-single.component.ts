@@ -25,4 +25,7 @@ export class PayslipSingleComponent implements OnInit {
     );
   }
 
+  toMonthString(month: number) {
+    return this.payslipService.toMonthString(month);
+  }
 }

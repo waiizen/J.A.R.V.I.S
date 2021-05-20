@@ -53,7 +53,7 @@ export class PayslipFormComponent implements OnInit {
     this.payslipForm = this.formBuilder.group({
       month: ['', Validators.required],
       year: ['', Validators.required],
-      amount: ['', Validators.required],
+      amount: ['', Validators.required, Validators.pattern('^[0-9]')],
       company: ['', Validators.required]
     });
   }
