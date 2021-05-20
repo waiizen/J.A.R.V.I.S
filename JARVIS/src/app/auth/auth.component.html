@@ -1,3 +1,11 @@
-<a routerLink="/auth/signin" style="text-decoration: none; color: inherit;"><button [disabled]="isAuth" class="btn btn-info">Sign in</button></a>
-<br/><br/>
+<div [hidden]="isAuth">
+  <p>Sorry !</p>
+  <p>You must be authenticated to access J.A.R.V.I.S .</p>
+</div>
+<div [hidden]="!isAuth">
+  <p>Hi {{userEmail}}</p>
+  <p>Welcome in J.A.R.V.I.S .</p>
+</div>
+<a routerLink="/auth/signin" style="text-decoration: none; color: inherit;"><button [disabled]="isAuth" class="btn btn-success">Sign in</button></a>
+&nbsp;&nbsp;
 <button class="btn btn-warning" [disabled]="!isAuth" (click)="onSignOut()">Sign out</button>
