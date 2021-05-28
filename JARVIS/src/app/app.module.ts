@@ -21,6 +21,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import {AuthService} from "./services/auth.service";
 import {AuthGuardService} from "./services/auth-guard.service";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
@@ -55,7 +56,8 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MatSliderModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTooltipModule
   ],
   providers: [
     PayslipService,
