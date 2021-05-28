@@ -13,6 +13,7 @@ export class PayslipComponent implements OnInit {
 
   payslips: Payslip[];
   payslipSubscription: Subscription;
+  isHide = false;
 
   constructor(private payslipService: PayslipService,
               private router: Router) { }
@@ -49,4 +50,21 @@ export class PayslipComponent implements OnInit {
   toMonthString(month: number) {
     return this.payslipService.toMonthString(month);
   }
+
+  onHideAmount(){
+    for(let i = 0 ; i < document.getElementsByClassName('tdAmount').length ; i++){
+      document.getElementsByClassName('tdAmount')[i].textContent="****,**"+" €";
+    }
+    this.isHide = true;
+  }
+
+  onShowAmount(){
+
+    for(let i = 0 ; i < document.getElementsByClassName('tdAmount').length ; i++){
+      document.getElementsByClassName('tdAmount')[i].textContent=this.payslips[i].amount.toString()+" €";
+    }
+
+    this.isHide = false;
+  }
+
 }
