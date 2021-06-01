@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PayslipService} from "../../services/PayslipService";
 import {Router} from "@angular/router";
 import {Payslip} from "../../models/payslip.model";
+import firebase from "firebase";
 
 @Component({
   selector: 'app-payslip-form',
@@ -41,6 +42,8 @@ export class PayslipFormComponent implements OnInit {
     {value: 2023, viewValue: '2023'}
   ];
 
+  currentUser = firebase.auth().currentUser;
+
   constructor(private formBuilder: FormBuilder,
               private payslipService: PayslipService,
               private router: Router) { }
@@ -75,6 +78,7 @@ export class PayslipFormComponent implements OnInit {
     if(this.fileUrl && this.fileUrl != ""){
       newPayslip.photo = this.fileUrl;
     }
+    if(this.currentUser) newPayslip.userUid = this.currentUser.uid;
     this.payslipService.createNewPayslip(newPayslip);
     this.router.navigate(['/payslip']);
   }

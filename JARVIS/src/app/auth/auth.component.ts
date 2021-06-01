@@ -14,6 +14,7 @@ export class AuthComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   userEmail: string;
+  userId: string;
 
   ngOnInit(): void {
     firebase.auth().onAuthStateChanged(
@@ -21,6 +22,7 @@ export class AuthComponent implements OnInit {
         if(user){
           this.isAuth = true;
           this.userEmail = user.email;
+          this.userId = user.uid;
         }
         else this.isAuth = false;
       }

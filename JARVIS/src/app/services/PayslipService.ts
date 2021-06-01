@@ -11,8 +11,10 @@ export class PayslipService {
 
   payslipsSubject = new Subject<Payslip[]>();
 
+  currentUser = firebase.auth().currentUser;
+
   constructor() {
-    this.getPayslips();
+    this.getPayslipsUid(this.currentUser.uid);
   }
 
   emitPayslipSubject(){
@@ -34,6 +36,15 @@ export class PayslipService {
 
   getPayslips(){
     firebase.database().ref('/payslip').on(
+      'value', (data: DataSnapshot) => {
+        this.payslipList = data.val() ? data.val() : [];
+        this.emitPayslipSubject();
+      }
+    );
+  }
+
+  getPayslipsUid(uid: string){
+    firebase.database().ref('/payslip').orderByChild("userId").equalTo(uid).on(
       'value', (data: DataSnapshot) => {
         this.payslipList = data.val() ? data.val() : [];
         this.emitPayslipSubject();

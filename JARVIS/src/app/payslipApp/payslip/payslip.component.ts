@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {PayslipService} from "../../services/PayslipService";
 import {Payslip} from "../../models/payslip.model";
 import {Subscription} from "rxjs";
+import firebase from "firebase";
 
 @Component({
   selector: 'app-payslip',
@@ -14,6 +15,7 @@ export class PayslipComponent implements OnInit {
   payslips: Payslip[];
   payslipSubscription: Subscription;
   isHide = false;
+  user = firebase.auth().currentUser;
 
   constructor(private payslipService: PayslipService,
               private router: Router) { }
