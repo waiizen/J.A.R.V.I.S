@@ -22,6 +22,8 @@ import { SigninComponent } from './auth/signin/signin.component';
 import {AuthService} from "./services/auth.service";
 import {AuthGuardService} from "./services/auth-guard.service";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import { IdComponent } from './idApp/id/id.component';
+import { IdFormComponent } from './idApp/id-form/id-form.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
@@ -29,6 +31,8 @@ const appRoutes: Routes = [
   { path: 'payslip', canActivate: [AuthGuardService], component: PayslipComponent},
   { path: 'payslip/view/:id', canActivate: [AuthGuardService], component: PayslipSingleComponent},
   { path: 'payslip/new', canActivate: [AuthGuardService], component: PayslipFormComponent},
+  { path: 'ids', canActivate: [AuthGuardService], component: IdComponent},
+  { path: 'ids/new', canActivate: [AuthGuardService], component: IdFormComponent},
   { path: 'auth/signin', component: SigninComponent},
   { path: 'auth', component: AuthComponent},
   { path: 'not-found', component: FourOhFourComponent},
@@ -46,7 +50,9 @@ const appRoutes: Routes = [
     PayslipSingleComponent,
     PayslipFormComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    IdComponent,
+    IdFormComponent
   ],
   imports: [
     BrowserModule,
