@@ -44,6 +44,7 @@ export class PayslipService {
   }
 
   getPayslipsUid(uid: string){
+    console.log("uid: "+uid);
     firebase.database().ref('/payslip').orderByChild("userId").equalTo(uid).on(
       'value', (data: DataSnapshot) => {
         this.payslipList = data.val() ? data.val() : [];

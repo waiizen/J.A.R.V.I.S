@@ -32,6 +32,7 @@ export class AuthComponent implements OnInit {
   onSignOut(){
     this.authService.signOutUser();
     alert('Signed out.');
+    location.reload();
   }
 
 }

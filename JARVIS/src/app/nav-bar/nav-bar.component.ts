@@ -28,6 +28,7 @@ export class NavBarComponent implements OnInit {
   onSignOut(){
     this.authService.signOutUser();
     alert('Signed out.');
+    location.reload();
   }
 
 }
