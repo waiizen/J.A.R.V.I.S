@@ -31,23 +31,28 @@ export class PayslipService {
   }
 
   savePayslips(){
+    console.log("[PAYSLIP SERVICE] - [savePayslips()]");
+    console.log(this.payslipList);
     firebase.database().ref('/payslip').set(this.payslipList);
   }
 
   getPayslips(){
+    console.log("[PAYSLIP SERVICE] - [getPayslips()]");
     firebase.database().ref('/payslip').on(
       'value', (data: DataSnapshot) => {
         this.payslipList = data.val() ? data.val() : [];
+        console.log("[PAYSLIP SERVICE] - [getPayslips()] - : "+this.payslipList);
         this.emitPayslipSubject();
       }
     );
   }
 
   getPayslipsUid(uid: string){
-    console.log("uid: "+uid);
+    console.log("[PAYSLIP SERVICE] - [getPayslipsUid("+uid+")]");
     firebase.database().ref('/payslip').orderByChild("userId").equalTo(uid).on(
       'value', (data: DataSnapshot) => {
         this.payslipList = data.val() ? data.val() : [];
+        console.log("[PAYSLIP SERVICE] - [getPayslipsUid("+uid+")] - : "+this.payslipList);
         this.emitPayslipSubject();
       }
     );

@@ -56,8 +56,9 @@ export class PayslipFormComponent implements OnInit {
     this.payslipForm = this.formBuilder.group({
       month: ['', Validators.required],
       year: ['', Validators.required],
-      amount: ['', Validators.required, Validators.pattern('^[0-9]')],
-      company: ['', Validators.required]
+      amount: ['', [Validators.required, Validators.pattern('^[0-9]*')]],
+      company: ['', Validators.required],
+      isPdf: ['']
     });
   }
 
@@ -75,10 +76,11 @@ export class PayslipFormComponent implements OnInit {
     newPayslip.year = this.payslipForm.get('year').value;
     newPayslip.amount = this.payslipForm.get('amount').value;
     newPayslip.company = this.payslipForm.get('company').value;
+    newPayslip.isPdf = this.payslipForm.get('isPdf').value;
     if(this.fileUrl && this.fileUrl != ""){
       newPayslip.photo = this.fileUrl;
     }
-    if(this.currentUser) newPayslip.userUid = this.currentUser.uid;
+    if(this.currentUser) newPayslip.userId = this.currentUser.uid;
     this.payslipService.createNewPayslip(newPayslip);
     this.router.navigate(['/payslip']);
   }

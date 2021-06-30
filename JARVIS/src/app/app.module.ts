@@ -24,6 +24,7 @@ import {AuthGuardService} from "./services/auth-guard.service";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import { IdComponent } from './idApp/id/id.component';
 import { IdFormComponent } from './idApp/id-form/id-form.component';
+import {PdfViewerModule} from "ng2-pdf-viewer";
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
@@ -63,7 +64,8 @@ const appRoutes: Routes = [
     MatSliderModule,
     MatOptionModule,
     MatSelectModule,
-    MatTooltipModule
+    MatTooltipModule,
+    PdfViewerModule
   ],
   providers: [
     PayslipService,

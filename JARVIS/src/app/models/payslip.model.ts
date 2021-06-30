@@ -5,5 +5,6 @@ export class Payslip{
   amount: number;
   company: string;
   photo: string;
-  userUid: string;
+  userId: string;
+  isPdf: boolean;
 }

@@ -34,8 +34,10 @@
       </div>
       <div class="form-group">
         <h4>Add a picture</h4>
+        <input type="checkbox" formControlName="isPdf" id="isPdf"/>
+        <label for="isPdf">&nbsp;It is a PDF ?</label>
         <input type="file" (change)="detectFiles($event)"
-               class="form-control" accept="image/*">
+               class="form-control" accept="image/*,application/pdf">
         <p class="text-success" *ngIf="fileUploaded">File loaded !</p>
       </div>
       <button class="btn btn-success" [disabled]="payslipForm.invalid || fileIsUploading"
