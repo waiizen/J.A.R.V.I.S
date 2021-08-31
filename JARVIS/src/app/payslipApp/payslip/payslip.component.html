@@ -21,7 +21,7 @@
             <td class="tdAmount">{{payslip.amount}} €</td>
             <td>
               <button class="btn btn-info" (click)="onShow(payslip.id)">Show</button>
-              <button class="btn btn-warning">Download</button>
+              <a [href]="payslip.photo" target="_blank"><button class="btn btn-warning">Download</button></a>
               <button class="btn btn-danger" (click)="onDelete(payslip.id)">Delete</button>
             </td>
           </tr>

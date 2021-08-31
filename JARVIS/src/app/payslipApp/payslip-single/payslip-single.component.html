@@ -1,6 +1,6 @@
 <h3>{{payslip.company}}</h3>
 <h4>{{toMonthString(payslip.month)}} {{payslip.year}}</h4>
 <h4>{{payslip.amount}}</h4>
-<div *ngIf="!payslip.isPdf" ><img style="max-width:400px;" *ngIf="payslip.photo" [src]="payslip.photo">{{payslip.photo}}</div>
-<div *ngIf="payslip.isPdf" ><pdf-viewer [src]="payslip.photo" [original-size]="true"></pdf-viewer></div>
 <a routerLink="/payslip">Go back to payslip's list.</a>
+<div *ngIf="!payslip.isPdf" ><img style="max-width:400px;" *ngIf="payslip.photo" [src]="payslip.photo">{{payslip.photo}}</div>
+<div *ngIf="payslip.isPdf"><pdf-viewer [src]="payslip.photo" [original-size]="true" [show-all]="true" style="display: block; height: 100vh !important;"></pdf-viewer></div>

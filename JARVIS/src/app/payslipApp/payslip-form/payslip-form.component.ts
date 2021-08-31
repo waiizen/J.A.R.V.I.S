@@ -4,6 +4,8 @@ import {PayslipService} from "../../services/PayslipService";
 import {Router} from "@angular/router";
 import {Payslip} from "../../models/payslip.model";
 import firebase from "firebase";
+import {Category} from "../../models/category.model";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-payslip-form',
@@ -16,6 +18,8 @@ export class PayslipFormComponent implements OnInit {
   fileIsUploading = false;
   fileUploaded = false;
   fileUrl : string;
+  payslipCategoryList: Category[] = [];
+  payslipCategorySubscription: Subscription;
 
   month: any[] = [
     {value: 1, viewValue: 'January'},
@@ -50,6 +54,15 @@ export class PayslipFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+
+    // Récupération des catégories
+    this.payslipService.getPayslipCategory();
+    this.payslipCategorySubscription = this.payslipService.payslipsCategoySubject.subscribe(
+      (payslipCategoryList: Category[]) => {
+        this.payslipCategoryList = payslipCategoryList;
+      }
+    );
+    this.payslipService.emitPayslipCategorySubject();
   }
 
   initForm(){

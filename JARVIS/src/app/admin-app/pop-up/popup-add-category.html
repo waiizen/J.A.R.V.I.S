@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Add a new company</h2>
+
+<mat-dialog-content [formGroup]="form">
+
+  <mat-form-field>
+    <input matInput
+           placeholder="Company name"
+           formControlName="name">
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button color="accent" (click)="close()">Close</button>&nbsp;&nbsp;
+  <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
+</mat-dialog-actions>

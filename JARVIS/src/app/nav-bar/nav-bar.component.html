@@ -2,14 +2,20 @@
   <div class="container-fluid">
     <div class="navbar-collapse">
       <ul class="nav navbar-nav">
-        <li routerLinkActive="active" *ngIf="isAuth" (click)="onSignOut()" matTooltip="Sign out"><a><i class="bi bi-box-arrow-in-left"></i></a></li>
+        <li routerLinkActive="active" *ngIf="isAuth" (click)="onSignOut()" matTooltip="Sign out"><a><i
+          class="bi bi-box-arrow-in-left"></i></a></li>
         <li routerLinkActive="active"><a routerLink="home"><i class="bi bi-house"></i></a></li>
         <li routerLinkActive="active"><a routerLink="auth">Authentification</a></li>
         <li routerLinkActive="active"><a routerLink="payslip">Payslip</a></li>
         <li routerLinkActive="active"><a routerLink="ids">Id</a></li>
       </ul>
-      <div class="navbar-right">
+      <div class="navbar-right jarvis">
         <p id="title">J.A.R.V.I.S</p>
+      </div>
+      <div class="navbar-right">
+        <ul class="nav navbar-nav">
+          <li routerLinkActive="active"><a routerLink="admin">Admin</a></li>
+        </ul>
       </div>
     </div>
   </div>

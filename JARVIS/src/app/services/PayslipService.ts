@@ -3,13 +3,16 @@ import {Payslip} from "../models/payslip.model";
 import firebase from "firebase";
 import DataSnapshot = firebase.database.DataSnapshot;
 import {Injectable} from "@angular/core";
+import {Category} from "../models/category.model";
 
 @Injectable()
 export class PayslipService {
 
   payslipList: Payslip[] = [];
+  payslipCategoryList: Category[] = [];
 
   payslipsSubject = new Subject<Payslip[]>();
+  payslipsCategoySubject = new Subject<Category[]>();
 
   currentUser = firebase.auth().currentUser;
 
@@ -19,6 +22,10 @@ export class PayslipService {
 
   emitPayslipSubject(){
     this.payslipsSubject.next(this.payslipList);
+  }
+
+  emitPayslipCategorySubject(){
+    this.payslipsCategoySubject.next(this.payslipCategoryList);
   }
 
   getPayslipById(id: number){
@@ -41,7 +48,7 @@ export class PayslipService {
     firebase.database().ref('/payslip').on(
       'value', (data: DataSnapshot) => {
         this.payslipList = data.val() ? data.val() : [];
-        console.log("[PAYSLIP SERVICE] - [getPayslips()] - : "+this.payslipList);
+        console.log("[PAYSLIP SERVICE] - [getPayslips()]");
         this.emitPayslipSubject();
       }
     );
@@ -52,7 +59,7 @@ export class PayslipService {
     firebase.database().ref('/payslip').orderByChild("userId").equalTo(uid).on(
       'value', (data: DataSnapshot) => {
         this.payslipList = data.val() ? data.val() : [];
-        console.log("[PAYSLIP SERVICE] - [getPayslipsUid("+uid+")] - : "+this.payslipList);
+        console.log("[PAYSLIP SERVICE] - [getPayslipsUid("+uid+")]");
         this.emitPayslipSubject();
       }
     );
@@ -150,6 +157,29 @@ export class PayslipService {
       case 12:
         return 'December';
     }
+  }
+
+  createNewPayslipCategory(newCategory: Category){
+    this.payslipCategoryList.push(newCategory);
+    this.savePayslipCategory();
+    this.emitPayslipCategorySubject();
+  }
+
+  savePayslipCategory(){
+    console.log("[PAYSLIP SERVICE] - [savePayslipCategory()]");
+    console.log(this.payslipCategoryList);
+    firebase.database().ref('/payslipCategory').set(this.payslipCategoryList);
+  }
+
+  getPayslipCategory(){
+    console.log("[PAYSLIP SERVICE] - [getPayslipCategory()]");
+    firebase.database().ref('/payslipCategory').on(
+      'value', (data: DataSnapshot) => {
+        this.payslipCategoryList = data.val() ? data.val() : [];
+        console.log("[PAYSLIP SERVICE] - [getPayslipCategory()]");
+        this.emitPayslipCategorySubject();
+      }
+    );
   }
 
 }
