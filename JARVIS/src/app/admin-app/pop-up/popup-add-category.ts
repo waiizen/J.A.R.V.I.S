@@ -13,9 +13,8 @@ export interface DialogData{
 export class PopupAddCategory {
   form: FormGroup;
 
-  constructor(
-    public dialogRef: MatDialogRef<PopupAddCategory>,
-    public formBuilder: FormBuilder) {
+  constructor(public dialogRef: MatDialogRef<PopupAddCategory>,
+              public formBuilder: FormBuilder) {
 
     this.form = formBuilder.group({
       name: ['', Validators.required]

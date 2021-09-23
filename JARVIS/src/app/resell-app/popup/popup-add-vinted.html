@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Add a new item</h2>
+
+<mat-dialog-content [formGroup]="form">
+  <mat-form-field><input matInput placeholder="Item name" formControlName="name"></mat-form-field>&nbsp;&nbsp;&nbsp;
+  <mat-form-field><input matInput placeholder="Item size" formControlName="size"></mat-form-field><br/>
+  <mat-form-field><input matInput placeholder="Buy price" formControlName="buyPrice"></mat-form-field>&nbsp;&nbsp;&nbsp;
+  <mat-form-field><input matInput placeholder="Sell price" formControlName="sellPrice"></mat-form-field><br/>
+  <mat-form-field><input matInput placeholder="Buy date" formControlName="buyDate"></mat-form-field>&nbsp;&nbsp;&nbsp;
+  <mat-form-field><input matInput placeholder="Publish date" formControlName="publishDate"></mat-form-field><br/>
+  <mat-form-field><input matInput placeholder="Sell date" formControlName="sellDate"></mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button color="accent" (click)="close()">Close</button>&nbsp;&nbsp;
+  <button class="mat-raised-button mat-primary"(click)="save()" [disabled]="!form.valid" >Save</button>
+</mat-dialog-actions>

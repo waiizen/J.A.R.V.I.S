@@ -30,6 +30,8 @@ import {PopupAddCategory} from "./admin-app/pop-up/popup-add-category";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
+import { ResellAppComponent } from './resell-app/resell-app.component';
+import {PopupAddVinted} from "./resell-app/popup/popup-add-vinted";
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
@@ -40,6 +42,7 @@ const appRoutes: Routes = [
   { path: 'ids', canActivate: [AuthGuardService], component: IdComponent},
   { path: 'ids/new', canActivate: [AuthGuardService], component: IdFormComponent},
   { path: 'admin', canActivate: [AuthGuardService], component: AdminAppComponent},
+  { path: 'resell', canActivate: [AuthGuardService], component: ResellAppComponent},
   { path: 'auth/signin', component: SigninComponent},
   { path: 'auth', component: AuthComponent},
   { path: 'not-found', component: FourOhFourComponent},
@@ -61,7 +64,9 @@ const appRoutes: Routes = [
     IdComponent,
     IdFormComponent,
     AdminAppComponent,
-    PopupAddCategory
+    PopupAddCategory,
+    ResellAppComponent,
+    PopupAddVinted
   ],
   imports: [
     BrowserModule,
